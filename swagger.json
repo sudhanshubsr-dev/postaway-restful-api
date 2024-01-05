@@ -1,0 +1,135 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "POSTAWAY RESTFUL API",
+    "description": "This is a RESTful API application made with Express. It is the backend for the POSTAWAY application.",
+    "version": "1.0.0"
+
+  },
+  "server": [
+    {
+      "url": "localhost:3000",
+      "description": "Local server"
+    
+    }
+  ],
+  "components":{
+    "securitySchemes":{
+      "JWT":{
+          "in": "header",
+          "name": "Authorization",
+          "type": "apiKey"
+      }}
+    },
+
+"paths":{
+        "/api/users/signup": {
+          "post": {
+            "tags": ["Users"],
+            "summary": "Create a new user",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "The user's name"
+                      },
+                      "email": {
+                        "type": "string",
+                        "description": "The user's email"
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "The user's password"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "description": "The user's gender"
+                      },
+                      "phone": {
+                        "type": "number",
+                        "description": "The user's phone number"
+                      }
+                    },
+                    "required": ["name", "email", "password"]
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "User created successfully"
+              },
+              "400": {
+                "description": "User already exists"
+              }
+            }
+          }
+        },
+        "/api/users/signin": {
+          "post": {
+            "tags": ["Users"],
+            "summary": "Sign in user",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "description": "The user's email"
+                      },
+                      "password": {
+                        "type": "string",
+                        "description": "The user's password"
+                      }
+                    },
+                    "required": ["email", "password"]
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "User signed in successfully"
+              },
+              "401": {
+                "description": "Invalid credentials"
+              }
+            }
+          }
+        },
+        "/api/users/logout": {
+          "get": {
+            "tags": ["Users"],
+            "summary": "Logout user",
+            "responses": {
+              "200": {
+                "description": "User logged out successfully"
+              },
+              "401": {
+                "description": "Unauthorized"
+              }
+            }
+          }
+        },
+        "/api/users/logout-all-devices": {
+          "get": {
+            "tags": ["Users"],
+            "summary": "Logout user from all devices",
+            "responses": {
+              "200": {
+                "description": "User logged out from all devices successfully"
+              },
+              "401": {
+                "description": "Unauthorized"
+              }
+            }
+          }
+        }
+      } 
+    }

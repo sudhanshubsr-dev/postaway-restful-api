@@ -1,0 +1,98 @@
+>> Develop a robust social media backend Rest-api that empowers users to post, commnet, like, send friend request, and reset their passwords using OTP for enhanced security
+
+USER AUTHENCTICATION
+
+> Implement a user authentication system with essential features like signup, login and logout. Moreover you have the opportunity to earn extra marks for implementing an advanced feature: the ability to logout from all devices. To achieve this, consider storing each login token in an additonal array within user's document. 
+> Registration should include user details such as name, email, password, and gender, Additional fields can be included as needed. 
+
+POST MANAGEMENT
+
+> Implement CRUD operations for posts, including fields like caption and an image URL related to the post. 
+> Ensure that each post references the user who created implementing
+> Post can be updated or deleted only by the post owner
+
+
+COMMENT SYSTEM 
+> Develop a comment system that allows users to add, update and delete comments on posts.
+> Comments can be updated or deleted only by the post owner or the commenter
+
+LIKE FUNCTIONALITY
+> Create a like system for posts, inlcuding logic with MongoDB and population of documents
+> Display counts of likes and comments on posts
+> Populate user information (id, name, and email) for likes, comments and posts
+
+
+FRIENDSHIP FEATURES 
+> Implement a friendship system with features like getting userfriends, managing pending freind requests, togglign friendships, and accepting/rejecting friend requests
+
+USER PROFILE UPDATES
+> Enable users to update their profiles, including fields like name, gender, or avatar. 
+> Implement avatar uploads for user profiles
+
+
+OTP BASED PASSWORD RESET (ADDITIONAL TASK)
+> Otp-based password reset feature. Create controllers, models and repositories for otp managment.
+> You can use the Nodemailer library for email communication
+
+
+
+Error Handling and Logging
+> Implement error handling middleware and request Logging
+
+
+
+
+API STRUCTURE 
+
+----User Routes-----
+.[POST] /api/users/signup
+.[POST] /api/users/signin
+.[GET]  /api/users/logout
+.[GET]  /api/users/logout-all-devices
+
+
+-----User Profile Routes------
+.[GET] /api/users/get-details/:userId     
+.[GET] /api/users/get-all-details
+.[PUT] /api/users/update-details/:userId
+
+
+------Post Routes--------
+
+.[GET]   /api/posts/all
+.[GET]   /api/posts/:postId
+.[GET]   /api/posts/ 
+.[POST]  /api/posts/ 
+.[DELTE] /api/posts/:postId
+.[PUT]   /api/posts/:postId
+
+-----Comment Routes------
+. [GET]     /api/comments/:postId
+. [POST]    /api/comments/:postId
+. [DELETE]  /api/comments/:commentId
+. [PUT]    /api/comments/:commentId
+
+
+
+-----Like Routes------
+
+. [GET]     /api/likes/:id
+. [GET]     /api/likes/toggle/:id
+
+
+
+-----Friendship Routes------
+
+. [GET]     /api/friends/get-friends/:userId
+. [GET]     /api/friends/get-pending-request/
+. [GET]     /api/friends/toggle-friendship/:friendId
+. [GET]     /api/friends/response-to-request/:friendId
+
+
+
+-----OTP Routes-------
+
+. [POST]    /api/otp/send
+. [POST]    /api/otp/verify
+. [POST]    /api/otp/reset-password
+
